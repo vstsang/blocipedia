@@ -8,25 +8,25 @@
     <div class="jumbotron text-center">
       <h3>Create and share Markdown Wikis</h3>
       <br>
-      <div class='btn btn-primary'>
-        Sign up
+        <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary' %>
       </div>
-    </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-6 text-center">
+  <div class="col-md-4 text-center col-md-offset-2">
     <h4>Create as many public wikis as you want!</h4>
     <br>
-    <div class="div1 center-block">
+    <div>
+      <%= image_tag "wikipedia-0.png", class: "div1"  %>
     </div>
     <h3>Free Plan</h3>
   </div>
-  <div class="col-md-6 text-center">
+  <div class="col-md-4 text-center">
     <h4>Create private wikis!</h4>
     <br>
-    <div class="div1 center-block">
+    <div>
+      <%= image_tag "wikipedia-1.jpg", class: "div1" %>
     </div>
     <h3>Premium Plan</h3>
   </div>
