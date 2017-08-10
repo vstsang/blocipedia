@@ -1,4 +1,16 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Profile</h2>
+<h4>Name: <small> <%= current_user.email %> </small> </h4>
+<h4>Account Plan: <small> <%= current_user.role.capitalize %> </small> </h4>
+
+<% if current_user.standard? %>
+  <%= link_to "Upgrade to Premium", charges_new_path %><br />
+<% elsif current_user.premium? %>
+  <%= link_to "Downgrade to Standard", users_downgrade_path %><br />
+<% end %>
+
+<hr>
+
+<h3>Edit <%= resource_name.to_s.humanize %></h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
