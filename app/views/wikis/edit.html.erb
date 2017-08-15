@@ -1,13 +1,35 @@
-<h1>Edit Wiki</h1>
+<%= javascript_include_tag 'https://cdn.rawgit.com/showdownjs/showdown/1.7.2/dist/showdown.min.js' %>
 
 <div class='row'>
-  <div class='col-md-4'>
+  <div class='col-md-6'>
+    <h1>Edit Wiki</h1>
     <p>Please update your Wiki below</p>
-  </div>
-</div>
-
-<div class='row'>
-  <div class='col-md-8'>
     <%= render partial: 'form', locals: { wiki: @wiki } %>
   </div>
+
+  <div class='col-md-6'>
+    <h1>Preview Wiki</h1>
+    <div class='preview_align'>
+    </div>
+    <div class='preview_box' id='preview'>
+      <%= markdown(@wiki.body) %>
+      <%= javascript_tag do %>
+        document.addEventListener("keypress", function(){
+          var converter = new showdown.Converter(),
+            text      = document.getElementById("wiki_body").value,
+            html      = converter.makeHtml(text);
+
+          document.getElementById('preview').innerHTML = html;
+        });
+      <% end %>
+    </div>
 </div>
+
+
+<%#
+
+var converter = new showdown.Converter(),
+text      = document.getElementById("wiki_body").value,
+html      = converter.makeHtml(text);
+document.write(html);
+%>
