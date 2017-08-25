@@ -4,6 +4,7 @@
     <small><span class="glyphicon glyphicon-lock"></span></small>
   <% end %>
 </h1>
+<em><small>Owned by <%= @wiki.owner.user.email %></small></em>
 
 <div class='row'>
   <div class='col-md-8'>
@@ -14,3 +15,6 @@
     <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
   </div>
 </div>
+
+<hr>
+<%= render partial: 'show_collaborators', locals: { wiki: @wiki } %>

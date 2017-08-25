@@ -26,7 +26,6 @@ gem 'devise'
 gem 'pundit'
 gem 'stripe'
 gem 'redcarpet'
-gem 'gon'
 
 group :development, :test do
   gem 'byebug'

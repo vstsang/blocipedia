@@ -11,12 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809225552) do
+ActiveRecord::Schema.define(version: 20170820104634) do
 
   create_table "amounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "collaborators", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "wiki_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id"
+  add_index "collaborators", ["wiki_id"], name: "index_collaborators_on_wiki_id"
+
+  create_table "owners", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "wiki_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "owners", ["user_id"], name: "index_owners_on_user_id"
+  add_index "owners", ["wiki_id"], name: "index_owners_on_wiki_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,11 +65,8 @@ ActiveRecord::Schema.define(version: 20170809225552) do
     t.string   "title"
     t.text     "body"
     t.boolean  "private",    default: false
-    t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
-
-  add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
 
 end
