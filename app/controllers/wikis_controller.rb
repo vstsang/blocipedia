@@ -29,6 +29,21 @@ class WikisController < ApplicationController
     end
   end
 
+  def toggle_collaborator
+    wiki = Wiki.find(params[:wiki_id])
+    collaborator = wiki.collaborators.where(user_id: params[:col])
+
+    if collaborator.empty?
+      #create a collaborator since the query returned an empty array
+      Collaborator.create(user_id: params[:col], wiki_id: params[:wiki_id])
+      redirect_to wiki
+    else
+      #delete collaborator
+      collaborator.destroy_all
+      redirect_to wiki
+    end
+  end
+
   def edit
     @wiki = Wiki.find(params[:id])
   end
