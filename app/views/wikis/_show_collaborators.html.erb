@@ -24,11 +24,11 @@
                 <td>
                   <div class="media-body text-center">
                     <% if @wiki.users.include?(user) %>
-                      <%=link_to wiki_toggle_collaborator_path(@wiki, :col => user), method: :put, remote: true do %>
+                      <%=link_to wiki_toggle_collaborator_path(@wiki.id, :col => user), method: :put, remote: true do %>
                         <span class="glyphicon glyphicon-check"></span>
                       <% end %>
                     <% else %>
-                      <%=link_to wiki_toggle_collaborator_path(@wiki, :col => user), method: :put, remote: true do %>
+                      <%=link_to wiki_toggle_collaborator_path(@wiki.id, :col => user), method: :put, remote: true do %>
                         <span class="glyphicon glyphicon-unchecked"></span>
                       <% end %>
                     <% end %>

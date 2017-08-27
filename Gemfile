@@ -26,6 +26,7 @@ gem 'devise'
 gem 'pundit'
 gem 'stripe'
 gem 'redcarpet'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'byebug'
