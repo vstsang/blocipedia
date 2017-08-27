@@ -16,5 +16,7 @@
   </div>
 </div>
 
-<hr>
-<%= render partial: 'show_collaborators', locals: { wiki: @wiki } %>
+<% if current_user.admin? || current_user.premium? %>
+  <hr>
+  <%= render partial: 'show_collaborators', locals: { wiki: @wiki } %>
+<% end %>
